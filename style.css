@@ -81,6 +81,7 @@ img {
   height: 200px;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-origin: border-box;
   background-clip: content-box, border-box;
   cursor: pointer;
@@ -345,26 +346,26 @@ img {
   margin: 0 auto;
 }
 
-.lds-ripple {
+.loader {
   position: relative;
   width: 300px;
   height: 300px;
 }
 
-.lds-ripple div {
+.loader div {
   position: absolute;
   border: 10px solid #fff;
   background: #606E85;
   opacity: 1;
   border-radius: 50%;
-  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  animation: loader 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
-.lds-ripple div:nth-child(2) {
+.loader div:nth-child(2) {
   animation-delay: -0.5s;
 }
 
-@keyframes lds-ripple {
+@keyframes loader {
   0% {
     top: 150px;
     left: 150px;
