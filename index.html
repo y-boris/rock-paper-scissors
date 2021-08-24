@@ -22,14 +22,39 @@
       </section>
 
       <section class="game__board">
-        <button class="game__board-item paper">
-          <img src="./images/icon-paper.svg" alt="Paper">
+        <button class="paper">
+          <div></div>
         </button>
-        <button class="game__board-item scissors">
-          <img src="./images/icon-scissors.svg" alt="Scissors">
+        <button class="scissors">
+          <div></div>
         </button>
-        <button class="game__board-item rock">
-          <img src="./images/icon-rock.svg" alt="Rock">
+        <button class="rock">
+          <div></div>
+        </button>
+      </section>
+
+      <section class="result__board">
+        <button class="player paper" aria-label="You picked">
+          <div></div>
+        </button>
+
+        <button class="computer scissors" aria-label="The house picked">
+          <div></div>
+        </button>
+      </section>
+
+      <section class="result__board result__finish">
+        <button class="player paper" aria-label="You picked">
+          <div></div>
+        </button>
+
+        <div class="result__box">
+          <p class="result__box-text">You lose</p>
+          <button class="result__box-btn">Play Again</button>
+        </div>
+
+        <button class="computer rock is-winner" aria-label="The house picked">
+          <div></div>
         </button>
       </section>
     </main>

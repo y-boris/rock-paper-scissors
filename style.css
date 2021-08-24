@@ -13,8 +13,8 @@ body {
   font-weight: 600;
   line-height: 1.3;
   background: radial-gradient(134.34% 134.34% at 50% 0%, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   color: #fff;
 }
 
@@ -58,7 +58,6 @@ img {
   padding: 10px;
   background: #fff;
   border-radius: 8px;
-
 }
 
 .score__board-text {
@@ -75,6 +74,51 @@ img {
   color: hsl(217, 16%, 45%);
 }
 
+.rock, .paper, .scissors {
+  border: solid 20px transparent;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.paper {
+  background-image: linear-gradient(#dadbdd, #f2edf1),
+                    radial-gradient(circle at bottom center, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: inset 0 8px rgba(0, 0, 0, 0.1), 0 8px rgba(86, 113, 245, 0.6);
+  margin-bottom: 20px;
+}
+
+.scissors {
+  background-image: linear-gradient(#dadbdd, #f2edf1),
+                    radial-gradient(circle at bottom center, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: inset 0 8px rgba(0, 0, 0, 0.1), 0 8px rgba(236, 169, 34, 0.6);
+}
+
+.rock {
+  background-image: linear-gradient(#dadbdd, #f2edf1),
+                    radial-gradient(circle at bottom center, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: inset 0 8px rgba(0, 0, 0, 0.1), 0 8px rgba(221, 64, 93, 0.6);
+}
+
+.paper div {
+  background-image: url("./images/icon-paper.svg");
+}
+
+.scissors div {
+  background-image: url("./images/icon-scissors.svg");
+}
+
+.rock div {
+  background-image: url("./images/icon-rock.svg");
+}
+
 .game__board {
   display: flex;
   flex-wrap: wrap;
@@ -84,45 +128,119 @@ img {
   background: url("./images/bg-triangle.svg") center 90px no-repeat;
 }
 
-.game__board-item {
-  border: solid 20px transparent;
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  cursor: pointer;
+.game__board .rock {
+  margin: 0 auto;
 }
 
-.game__board-item  img {
-  width: 65px;
-}
-
-.game__board-item:hover {
+.game__board button:hover {
   transform: scale(1.05);
 }
 
-.paper {
-  background-image: linear-gradient(#dadbdd, #f2edf1),
-                    radial-gradient(circle at bottom center, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-  box-shadow: inset 0 6px rgba(0, 0, 0, 0.2), 0 6px rgba(86, 113, 245, 0.7);
-  margin-bottom: 20px;
+.game__board div {
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 65px auto;
 }
 
-.scissors {
-  background-image: linear-gradient(#dadbdd, #f2edf1),
-                    radial-gradient(circle at bottom center, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-  box-shadow: inset 0 6px rgba(0, 0, 0, 0.2), 0 6px rgba(236, 169, 34, 0.7);
-}
-
-.rock {
-  background-image: linear-gradient(#dadbdd, #f2edf1),
-                    radial-gradient(circle at bottom center, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-  box-shadow: inset 0 6px rgba(0, 0, 0, 0.2), 0 6px rgba(221, 64, 93, 0.7);
+.result__board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0 auto;
+  width: 660px;
+  padding-top: 100px;
+}
+
+.result__board .player,
+.result__board .computer {
+  border: solid 30px transparent;
+  width: 300px;
+  height: 300px;
+}
+
+.result__board .player::before,
+.result__board .computer::before {
+  content: attr(aria-label);
+  position: absolute;
+  top: -120px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 700;
+}
+
+.result__board div {
+  width: 300px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100px auto;
+}
+
+.result__board .paper {
+  box-shadow: inset 0 12px rgba(0, 0, 0, 0.1), 0 12px rgba(86, 113, 245, 0.6);
+}
+
+.result__board .scissors {
+  box-shadow: inset 0 12px rgba(0, 0, 0, 0.1), 0 12px rgba(236, 169, 34, 0.6);
+}
+
+.result__board .rock {
+  box-shadow: inset 0 12px rgba(0, 0, 0, 0.1), 0 12px rgba(221, 64, 93, 0.6);
+}
+
+.result__finish {
+  width: 950px;
+}
+
+.result__box {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result__box-text {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.result__box-btn {
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  color: hsl(229, 64%, 46%);
+  padding: 18px 50px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.result__box-btn:hover {
+  color: hsl(349, 71%, 52%);
+}
+
+/* class for winner */
+
+.is-winner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.08),
+              0 0 0 140px rgba(255, 255, 255, 0.04),
+              0 0 0 215px rgba(255, 255, 255, 0.02);
 }
 
 /* frontend mentor */
@@ -136,6 +254,8 @@ img {
   font-size: 12px;
   flex: 1;
 }
+
+/* button for show modal dialog */
 
 .button {
   background: transparent;
@@ -155,8 +275,7 @@ img {
   border: 1px solid hsl(217, 16%, 45%);
 }
 
-/* modal dialog - rules */
-
+/* modal dialog */
 .modal {
   display: flex;
   position: fixed;
