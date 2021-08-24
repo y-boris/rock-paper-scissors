@@ -2,36 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
-
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
+  <div class="wrapper">
+    <main class="container">
+      <section class="score__board">
+        <div class="score__board-logo">
+          <img src="./images/logo.svg" alt="Rock, Paper, Scissors">
+        </div>
+        <div class="score__board-numbers">
+          <p class="score__board-text">Score</p>
+          <span class="score__board-number">0</span>
+        </div>
+      </section>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+      <section class="game__board">
+        <button class="game__board-item paper">
+          <img src="./images/icon-paper.svg" alt="Paper">
+        </button>
+        <button class="game__board-item scissors">
+          <img src="./images/icon-scissors.svg" alt="Scissors">
+        </button>
+        <button class="game__board-item rock">
+          <img src="./images/icon-rock.svg" alt="Rock">
+        </button>
+      </section>
+    </main>
+
+    <div class="modal">
+      <div class="modal__dialog">
+        <button class="modal__dialog-button">
+          <img src="./images/icon-close.svg" alt="Close">
+        </button>
+        <p class="modal__dialog-title">Rules</p>
+        <img class="modal__dialog-image" src="./images/image-rules.svg" alt="Rules">
+      </div>
+    </div>
+
+    <footer class="footer">
+      <button class="button">Rules</button>
+      <p class="footer__text">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a><br>
+        Coded by @<a href="http://github.com/ya-boris?tab=repositories">ya_boris</a>
+      </p>
+    </footer>
   </div>
+
+  <script src="./script.js"></script>
+
 </body>
 </html>
