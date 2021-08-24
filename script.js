@@ -28,7 +28,7 @@ const gameElements = {
 
 let RESULT = 0
 
-console.log(gameElements.gameButtons)
+console.log(gameElements.gameButtons) // !! TESTING
 
 // play the round when button is clicked
 for (let elem of gameElements.gameButtons) {
