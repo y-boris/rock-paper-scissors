@@ -23,21 +23,28 @@ window.addEventListener("click", windowOnClick)
 
 // create game elements
 
-const gameButtons = Array.from(document.querySelector(".game__board").children)
-const gameBoard = document.querySelector(".game__board")
-const resultBoard = document.querySelector(".result__board")
-const resultBox = document.querySelector(".result__box")
-const playerSelectionButton = document.querySelector(".player")
-const computerSelectionButton = document.querySelector(".computer")
-const restartButton = document.querySelector(".result__box-btn")
-const loader = document.querySelector(".result__board-wait")
-const resultText = document.querySelector(".result__box-text")
-const gameScore = document.querySelector(".score__board-number")
-const resetScoreButton = document.querySelector(".reset-score")
+const gameButtons = Array.from(document.querySelector(".game__board").children),
+      gameBoard = document.querySelector(".game__board"),
+      resultBoard = document.querySelector(".result__board"),
+      resultBox = document.querySelector(".result__box"),
+      playerSelectionButton = document.querySelector(".player"),
+      computerSelectionButton = document.querySelector(".computer"),
+      restartButton = document.querySelector(".result__box-btn"),
+      loader = document.querySelector(".result__board-wait"),
+      resultText = document.querySelector(".result__box-text"),
+      gameScore = document.querySelector(".score__board-number"),
+      resetScoreButton = document.querySelector(".reset-score")
 
 let playerSelection, computerSelection
-let result = false
-let score = 0
+
+// preserve the score on page refresh
+let score = localStorage.getItem("score") ? (JSON.parse(localStorage.getItem("score"))) : 0
+// console.log("###### score:", score) // !! TESTING
+gameScore.textContent = score;
+
+if (score > 0) {
+  resetScoreButton.style.display = "flex"
+}
 
 // console.log(gameButtons) // !! TESTING
 
@@ -96,10 +103,15 @@ function showResultGame() {
     case false:
       resultText.textContent = "You Lose"
       computerSelectionButton.classList.add("is-winner")
-      score--
-      gameScore.textContent = score
+      if (score != 0) {
+        score--
+        gameScore.textContent = score
+      }
       break
   }
+
+  // store the game score to preserve it
+  localStorage.setItem("score", JSON.stringify(score));
 }
 
 function renderResultScreen() {
@@ -122,6 +134,9 @@ function renderResultScreen() {
       showResultGame()
       resultBoard.classList.add("result__finish")
       resultBox.style.display = "flex"
+
+      // !!
+      resetScoreButton.style.display = "flex"
       // console.log("#### RESULT GAME:", result) // !! TESTING
       // console.log("#### RESULT TEXT:", resultText.textContent) // !! TESTING
     }, 200)
@@ -138,6 +153,7 @@ function restartGame() {
   loader.style.display = ""
   computerSelectionButton.style.display = ""
   resultBox.style.display = ""
+  // resetScoreButton.style.display = ""
 
   playerSelectionButton.classList.remove(`${playerSelection}`)
   computerSelectionButton.classList.remove(`${computerSelection}`)
@@ -153,4 +169,6 @@ resetScoreButton.addEventListener('click', resetScore);
 function resetScore() {
   score = 0
   gameScore.textContent = score
+  resetScoreButton.style.display = ""
+  localStorage.clear();
 }

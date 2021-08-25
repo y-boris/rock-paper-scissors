@@ -292,6 +292,7 @@ img {
 }
 
 .reset-score {
+  display: none;
   margin-right: 20px;
   background: #fff;
   color: hsl(229, 64%, 46%);
@@ -333,7 +334,6 @@ img {
   opacity: 0;
   transform: translateY(-10%);
   transition: transform 0.2s, opacity 0.2s;
-  transition-delay: 0.2s;
 }
 
 .modal-open > .modal__dialog {
