@@ -145,7 +145,7 @@ img {
 }
 
 .result__board {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 auto 100px;
@@ -158,6 +158,7 @@ img {
   border: solid 30px transparent;
   width: 300px;
   height: 300px;
+  cursor: default;
 }
 
 .result__board .player::before,
@@ -172,6 +173,10 @@ img {
   text-transform: uppercase;
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-weight: 700;
+}
+
+.result__board .computer {
+  display: none;
 }
 
 .result__board div {
@@ -200,7 +205,7 @@ img {
 
 .result__box {
   width: 350px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -236,7 +241,7 @@ img {
 }
 
 .result__board-wait::before {
-  top: -90px;
+  top: -91px;
 }
 
 /* class for winner */
@@ -284,6 +289,18 @@ img {
   background: #fff;
   color: hsl(229, 64%, 46%);
   border: 1px solid hsl(217, 16%, 45%);
+}
+
+.reset-score {
+  margin-right: 20px;
+  background: #fff;
+  color: hsl(229, 64%, 46%);
+}
+
+.reset-score:hover {
+  margin-right: 20px;
+  background: #fff;
+  color: hsl(349, 71%, 52%);;
 }
 
 /* modal dialog */

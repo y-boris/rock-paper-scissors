@@ -34,16 +34,25 @@
       </section>
 
       <section class="result__board">
-        <button class="player paper" aria-label="You picked">
+        <button class="player" aria-label="You picked">
           <div></div>
         </button>
 
         <div class="result__board-wait" aria-label="The house picked">
           <div class="loader"><div></div><div></div></div>
         </div>
+
+        <div class="result__box">
+          <p class="result__box-text">You lose</p>
+          <button class="result__box-btn">Play Again</button>
+        </div>
+
+        <button class="computer" aria-label="The house picked">
+          <div></div>
+        </button>
       </section>
 
-      <section class="result__board">
+      <!-- <section class="result__board">
         <button class="player paper" aria-label="You picked">
           <div></div>
         </button>
@@ -66,7 +75,7 @@
         <button class="computer rock is-winner" aria-label="The house picked">
           <div></div>
         </button>
-      </section>
+      </section> -->
     </main>
 
     <div class="modal">
@@ -81,6 +90,7 @@
 
     <footer class="footer">
       <button class="button">Rules</button>
+      <button class="button reset-score">Reset score</button>
       <p class="footer__text">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a><br>
         Coded by @<a href="http://github.com/ya-boris?tab=repositories">ya_boris</a>
