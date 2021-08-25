@@ -664,6 +664,11 @@ img {
     height: 150px;
   }
 
+  .result__board-wait::before {
+    top: -110px;
+    text-align: center;
+  }
+
   @keyframes loader {
     0% {
       top: 75px;
