@@ -1,28 +1,28 @@
-const btnShowModal = document.querySelector(".button"),
-      btnCloseModal = document.querySelector(".modal__dialog-button"),
+// modal elements
+const showModalButton = document.querySelector(".show-rules"),
+      closeModalButton = document.querySelector(".modal__dialog-button"),
       modal = document.querySelector(".modal")
 
-// show & hide the rules modal
+// show & hide modal
 function toggleModal() {
-  modal.classList.toggle("modal-open")
+  modal.classList.toggle("modal-show")
 }
 
-// hide the rules when user clicks outside the modal window
+// hide the modal when click outside
 function windowOnClick(event) {
   if(event.target === modal){
-      toggleModal()
+    toggleModal()
   }
 }
 
 // add function when the buttons/window are clicked
-btnShowModal.addEventListener("click", toggleModal)
-btnCloseModal.addEventListener("click", toggleModal)
+showModalButton.addEventListener("click", toggleModal)
+closeModalButton.addEventListener("click", toggleModal)
 window.addEventListener("click", windowOnClick)
 
 ////////// GAME //////////
 
-// create game elements
-
+// game elements
 const gameButtons = Array.from(document.querySelector(".game__board").children),
       gameBoard = document.querySelector(".game__board"),
       resultBoard = document.querySelector(".result__board"),
@@ -39,18 +39,15 @@ let playerSelection, computerSelection
 
 // preserve the score on page refresh
 let score = localStorage.getItem("score") ? (JSON.parse(localStorage.getItem("score"))) : 0
-// console.log("###### score:", score) // !! TESTING
-gameScore.textContent = score;
+gameScore.textContent = score
+
+// play the game when button is clicked
+for (let elem of gameButtons) {
+  elem.addEventListener("click", playGame)
+}
 
 if (score > 0) {
   resetScoreButton.style.display = "flex"
-}
-
-// console.log(gameButtons) // !! TESTING
-
-// play the round when button is clicked
-for (let elem of gameButtons) {
-  elem.addEventListener("click", playGame)
 }
 
 // get player selection and run game
@@ -59,9 +56,6 @@ function playGame(event) {
   computerSelection = computerPlay()
   getResultGame(playerSelection, computerSelection)
   renderResultScreen()
-
-  // console.log("player - ", playerSelection) // !! TESTING
-  // console.log("computer - ", computerSelection) // !! TESTING
 }
 
 // get computer selection
@@ -71,15 +65,14 @@ function computerPlay() {
   return computerSelection
 }
 
-// compare the selections and get the result
 function getResultGame(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     result = undefined
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    result = true
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-    result = true
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+  } else if (
+      (playerSelection === "paper" && computerSelection === "rock") ||
+      (playerSelection === "rock" && computerSelection === "scissors") ||
+      (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
     result = true
   } else {
     result = false
@@ -99,6 +92,7 @@ function showResultGame() {
       playerSelectionButton.classList.add("is-winner")
       score++
       gameScore.textContent = score
+      resetScoreButton.style.display = "flex"
       break
     case false:
       resultText.textContent = "You Lose"
@@ -111,7 +105,7 @@ function showResultGame() {
   }
 
   // store the game score to preserve it
-  localStorage.setItem("score", JSON.stringify(score));
+  localStorage.setItem("score", JSON.stringify(score))
 }
 
 function renderResultScreen() {
@@ -120,27 +114,21 @@ function renderResultScreen() {
 
   // add selected button to player selection
   playerSelectionButton.classList.add(`${playerSelection}`)
-  // console.log("###### player pick:", playerSelection) // !! TESTING
 
   // add computer selection after a delay
   setTimeout(function () {
     loader.style.display = "none"
     computerSelectionButton.style.display = "flex"
     computerSelectionButton.classList.add(`${computerSelection}`)
-    // console.log("###### computer pick:", computerSelection) // !! TESTING
 
     // show result box after another delay
     setTimeout(function () {
       showResultGame()
       resultBoard.classList.add("result__finish")
       resultBox.style.display = "flex"
-
-      // !!
       resetScoreButton.style.display = "flex"
-      // console.log("#### RESULT GAME:", result) // !! TESTING
-      // console.log("#### RESULT TEXT:", resultText.textContent) // !! TESTING
     }, 200)
-  }, 200)
+  }, 1000)
 }
 
 // play another game when "play again" is clicked
@@ -153,7 +141,6 @@ function restartGame() {
   loader.style.display = ""
   computerSelectionButton.style.display = ""
   resultBox.style.display = ""
-  // resetScoreButton.style.display = ""
 
   playerSelectionButton.classList.remove(`${playerSelection}`)
   computerSelectionButton.classList.remove(`${computerSelection}`)
@@ -164,11 +151,11 @@ function restartGame() {
 }
 
 // reset score when reset button is clicked
-resetScoreButton.addEventListener('click', resetScore);
+resetScoreButton.addEventListener('click', resetScore)
 
 function resetScore() {
   score = 0
   gameScore.textContent = score
+  localStorage.clear()
   resetScoreButton.style.display = ""
-  localStorage.clear();
 }
