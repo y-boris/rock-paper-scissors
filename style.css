@@ -30,6 +30,7 @@ img {
   display: flex;
   flex-direction: column;
   max-width: 1300px;
+  min-width: 320px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 0 10px;
@@ -125,7 +126,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 auto 100px;
+  margin: 0 auto 50px;
   width: 475px;
   background: url("./images/bg-triangle.svg") center 90px no-repeat;
 }
@@ -481,7 +482,7 @@ img {
   .result__box {
     width: 100% !important;
     order: 3;
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 
@@ -587,7 +588,7 @@ img {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 489px) {
   .score__board-numbers {
     width: 100px;
   }
@@ -595,8 +596,9 @@ img {
   .game__board {
     margin: 0 auto 100px;
     width: auto;
+    background-size: 60%;
     background-position: center 60px;
-    padding: 0 25px;
+    padding: 0 10px;
   }
 
   .rock,
@@ -692,5 +694,87 @@ img {
 
   .footer__text {
     display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .game__board {
+    padding: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .score__board-numbers {
+    width: 80px;
+  }
+
+  .game__board {
+    margin: 0 auto 50px;
+    padding: 0;
+  }
+
+  .rock,
+  .paper,
+  .scissors {
+    width: 130px;
+    height: 130px;
+  }
+
+  .game__board div {
+    width: 130px;
+    height: 130px;
+  }
+
+  .result__board, .result__finish {
+    justify-content: space-between;
+}
+
+  .result__board .player,
+  .result__board .computer {
+    width: 130px;
+    height: 130px;
+  }
+
+  .result__board-wait {
+    width: 130px;
+    height: 130px;
+  }
+
+  .result__board div {
+    width: 130px;
+    height: 130px;
+  }
+
+  .result__box-text {
+    font-size: 50px;
+  }
+
+  .is-winner::after {
+    box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.08),
+                0 0 0 80px rgba(255, 255, 255, 0.04),
+                0 0 0 120px rgba(255, 255, 255, 0.02);
+  }
+
+  .loader {
+    position: relative;
+    width: 130px;
+    height: 130px;
+  }
+
+  @keyframes loader {
+    0% {
+      top: 65px;
+      left: 65px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 130px;
+      height: 130px;
+      opacity: 0;
+    }
   }
 }
