@@ -69,16 +69,9 @@ function getResultGame(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     result = undefined
   } else if (
-      (playerSelection === "scissors" && computerSelection === "paper") ||
       (playerSelection === "paper" && computerSelection === "rock") ||
-      (playerSelection === "rock" && computerSelection === "lizard") ||
-      (playerSelection === "lizard" && computerSelection === "spock") ||
-      (playerSelection === "spock" && computerSelection === "scissors") ||
-      (playerSelection === "scissors" && computerSelection === "lizard") ||
-      (playerSelection === "paper" && computerSelection === "spock") ||
       (playerSelection === "rock" && computerSelection === "scissors") ||
-      (playerSelection === "lizard" && computerSelection === "paper") ||
-      (playerSelection === "spock" && computerSelection === "rock")
+      (playerSelection === "scissors" && computerSelection === "paper")
     ) {
     result = true
   } else {
