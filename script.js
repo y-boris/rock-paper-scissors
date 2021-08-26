@@ -126,7 +126,10 @@ function renderResultScreen() {
       showResultGame()
       resultBoard.classList.add("result__finish")
       resultBox.style.display = "flex"
-      resetScoreButton.style.display = "flex"
+
+      if (score > 0) {
+        resetScoreButton.style.display = "flex"
+      }
     }, 200)
   }, 1000)
 }
